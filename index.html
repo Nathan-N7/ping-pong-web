@@ -16,11 +16,19 @@
             canvasE1.height = canvasCtx.height = window.innerHeight;
         }
         function draw() {
+            //campo
             canvasCtx.fillStyle = "#286047";
             canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight);
             canvasCtx.fillStyle = "#ffffff"
-            
+
+            //linha central   
             canvasCtx.fillRect(window.innerWidth / 2 - lineWidth / 2, 0, lineWidth, window.innerHeight);
+            
+            //raquete esquerda
+            canvasCtx.fillRect(10, 400, lineWidth, 200);
+
+            //raquete direita
+            canvasCtx.fillRect(window.innerWidth - lineWidth - 10, 400, lineWidth, 200);
         }
         setup();
         draw();
