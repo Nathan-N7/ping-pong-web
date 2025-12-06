@@ -8,7 +8,22 @@
 <body>
     <canvas></canvas>
     <script>
-        
+        const canvasE1 = document.querySelector("canvas");
+        const canvasCtx = canvasE1.getContext("2d");
+        const lineWidth = 15;
+        function setup() {
+            canvasE1.width = canvasCtx.width = window.innerWidth;
+            canvasE1.height = canvasCtx.height = window.innerHeight;
+        }
+        function draw() {
+            canvasCtx.fillStyle = "#286047";
+            canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+            canvasCtx.fillStyle = "#ffffff"
+            
+            canvasCtx.fillRect(window.innerWidth / 2 - lineWidth / 2, 0, lineWidth, window.innerHeight);
+        }
+        setup();
+        draw();
     </script>
 </body>
 </html>
