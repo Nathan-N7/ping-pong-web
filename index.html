@@ -27,6 +27,17 @@
                 canvasCtx.fillRect(field.w / 2 - this.w / 2, 0, this.w, this.h);  
             }
         }
+        const ball = {
+            x: 200,
+            y: 300,
+            r: 20,
+            draw: function() {
+                canvasCtx.fillStyle = "#ffffff";
+                canvasCtx.beginPath();
+                canvasCtx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+                canvasCtx.fill();
+            }
+        }
         function setup() {
             canvasE1.width = canvasCtx.width = field.w;
             canvasE1.height = canvasCtx.height = field.h;
@@ -36,14 +47,9 @@
             line.draw();
             //raquete esquerda
             canvasCtx.fillRect(10, 400, lineWidth, 200);
-
             //raquete direita
-            canvasCtx.fillRect(window.innerWidth - lineWidth - 10, 400, lineWidth, 200);
-
-            //bolinha
-            canvasCtx.beginPath();
-            canvasCtx.arc(500, 300, 20, 0, 2 * Math.PI, false);
-            canvasCtx.fill();
+            canvasCtx.fillRect(field.w - lineWidth - 10, 400, lineWidth, 200);
+            ball.draw();
 
             //placar    
             canvasCtx.font = "bold 72px Arial";
