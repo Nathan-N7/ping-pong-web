@@ -49,7 +49,7 @@
             w: line.w,
             h: 200,
             _move: function() {
-                this.y = ball.y - this.h / 2;
+                this.y = ball.y - this.h / 2 ;
             },
             draw: function() {
                 canvasCtx.fillStyle = "#ffffff";
@@ -64,6 +64,12 @@
             speed: 8,
             directionY: 1,
             directionX: 1,
+            _reset: function() {
+                this.x = field.w / 2;
+                this.y = field.h / 2;
+
+                this.directionX *= -1;
+            },
             _calcPosition: function() {
                 if (this.y > field.h - this.r || this.y < 0 + this.r) {
                     this.directionY *= -1;
@@ -81,6 +87,14 @@
                     this.y < rightPaddle.y + rightPaddle.h
                 ) {
                     this.directionX = -1;
+                }
+                if (this.x < 0 - this.r) {
+                    score.computer++;
+                    this._reset();
+                }
+                if (this.x > field.w + this.r) {
+                    score.human++;
+                    this._reset();
                 }
             },
             _reverseY: function() {
@@ -100,8 +114,8 @@
             }
         }
         const score = {
-            human: 1,
-            computer: 2,
+            human: 0,
+            computer: 0,
             draw: function() {
                 canvasCtx.font = "bold 72px Arial";
                 canvasCtx.textAlign = "center";
