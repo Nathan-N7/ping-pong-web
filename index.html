@@ -49,7 +49,7 @@
             w: line.w,
             h: 200,
             _move: function() {
-                this.y = ball.y;
+                this.y = ball.y - this.h / 2;
             },
             draw: function() {
                 canvasCtx.fillStyle = "#ffffff";
@@ -67,6 +67,20 @@
             _calcPosition: function() {
                 if (this.y > field.h - this.r || this.y < 0 + this.r) {
                     this.directionY *= -1;
+                }
+                if (
+                    this.x - this.r < leftPaddle.x + leftPaddle.w &&
+                    this.y > leftPaddle.y &&
+                    this.y < leftPaddle.y + leftPaddle.h
+                ) {
+                    this.directionX = 1;
+                }
+                if (
+                    this.x + this.r > rightPaddle.x &&
+                    this.y > rightPaddle.y &&
+                    this.y < rightPaddle.y + rightPaddle.h
+                ) {
+                    this.directionX = -1;
                 }
             },
             _reverseY: function() {
