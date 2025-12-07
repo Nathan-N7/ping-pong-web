@@ -48,16 +48,20 @@
             y: 100,
             w: line.w,
             h: 200,
+            _move: function() {
+                this.y = ball.y;
+            },
             draw: function() {
                 canvasCtx.fillStyle = "#ffffff";
                 canvasCtx.fillRect(this.x, this.y, this.w, this.h);
+                this._move();
             }
         }
         const ball = {
             x: 200,
             y: 300,
             r: 20,
-            speed: 5,
+            speed: 8,
             _move: function() {
                 this.x += 1 * this.speed;
                 this.y += 1 * this.speed;
