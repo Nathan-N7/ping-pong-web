@@ -62,15 +62,26 @@
             y: 300,
             r: 20,
             speed: 8,
-            _move: function() {
-                this.x += 1 * this.speed;
-                this.y += 1 * this.speed;
+            directionY: 1,
+            directionX: 1,
+            _calcPosition: function() {
+                if (this.y > field.h - this.r || this.y < 0 + this.r) {
+                    this.directionY *= -1;
+                }
+            },
+            _reverseY: function() {
+
+            },
+            _move: function(){
+                this.x += this.directionX * this.speed;
+                this.y += this.directionY * this.speed;
             },
             draw: function() {
                 canvasCtx.fillStyle = "#ffffff";
                 canvasCtx.beginPath();
                 canvasCtx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
                 canvasCtx.fill();
+                this._calcPosition();
                 this._move();
             }
         }
