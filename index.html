@@ -90,10 +90,12 @@
                 }
                 if (this.x < 0 - this.r) {
                     score.computer++;
+                    this.speed++;
                     this._reset();
                 }
                 if (this.x > field.w + this.r) {
                     score.human++;
+                    this.speed++;
                     this._reset();
                 }
             },
