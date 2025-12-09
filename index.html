@@ -48,8 +48,17 @@
             y: 100,
             w: line.w,
             h: 200,
+            speed: 6,
             _move: function() {
-                this.y = ball.y - this.h / 2 ;
+                const reactionZone = field.w * 0.6;
+
+                if (ball.x > reactionZone) {
+                    if (this.y + this.h / 2 < ball.y) {
+                        this.y += this.speed;
+                    } else if (this.y + this.h / 2 > ball.y) {
+                        this.y -= this.speed;
+                    }
+                }
             },
             draw: function() {
                 canvasCtx.fillStyle = "#ffffff";
@@ -91,11 +100,13 @@
                 if (this.x < 0 - this.r) {
                     score.computer++;
                     this.speed++;
+                    rightPaddle.speed++;
                     this._reset();
                 }
                 if (this.x > field.w + this.r) {
                     score.human++;
                     this.speed++;
+                    rightPaddle.speed++;
                     this._reset();
                 }
             },
